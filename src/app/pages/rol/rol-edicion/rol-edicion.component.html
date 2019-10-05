@@ -1,0 +1,25 @@
+<mat-card>Ingrese los datos del paciente</mat-card>
+
+<form class="example-container" [formGroup]="form" (ngSubmit)="operar()" #frmRol="ngForm">
+
+    <div [hidden]="true">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="ID" required formControlName="id">
+      </mat-form-field>
+    </div>
+  
+    <mat-form-field class="example-full-width">
+      <div *ngIf="f.nombres.errors?.required" class="invalido">Nombre es requerido</div>
+      <div *ngIf="f.nombres.errors?.minlength" class="invalido">El campo debe ser mayor a 3 caracteres</div>
+      <input matInput placeholder="Nombres" minlength="2" required formControlName="nombres">
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit" [disabled]="frmRol.invalid">
+      <mat-icon>done</mat-icon>
+      <span>Aceptar</span>
+    </button>
+    <button mat-raised-button color="accent" routerLink='/rol' type="button">
+      <mat-icon>close</mat-icon>
+      <span>Cancelar</span>
+    </button>
+  </form>
